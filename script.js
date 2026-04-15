@@ -350,7 +350,7 @@ labelBalance.addEventListener(`click`, function () {
     }
   });
 });
-*/
+
 //Numeric Separators
 
 //const diameter = 253535000000;
@@ -363,3 +363,39 @@ console.log(price1, price2);
 
 console.log(Number(`23_000`));
 console.log(parseInt(`23_000`));
+*/
+
+//Working with BigInt
+
+console.log(2 ** 53 - 1);
+console.log(Number.MAX_SAFE_INTEGER);
+
+console.log(53246435373568656857568587597567563753n);
+console.log(BigInt(53246435373568656857568587597567563753));
+console.log(BigInt(53246435373568));
+
+//Operations with BigInt
+console.log(1000n + 1000n);
+console.log(624643963596305694683496204542068942n * 1000000n);
+
+const a = 23;
+const b = 2532463664255n;
+
+console.log(BigInt(a) * b);
+
+console.log(20 > 15n);
+console.log(20 === 20n);
+console.log(20 == 20n);
+
+console.log(typeof 20n, typeof 20);
+
+console.log(20n == `20`);
+console.log(20n === `20`);
+
+const c = 64263653754743325n;
+
+console.log(c + ` is a really big number`);
+
+//console.log(Math.sqrt(16n));
+
+console.log(10n / 3n);
