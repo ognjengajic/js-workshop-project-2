@@ -366,7 +366,7 @@ console.log(parseInt(`23_000`));
 */
 
 //Working with BigInt
-
+/*
 console.log(2 ** 53 - 1);
 console.log(Number.MAX_SAFE_INTEGER);
 
@@ -399,3 +399,39 @@ console.log(c + ` is a really big number`);
 //console.log(Math.sqrt(16n));
 
 console.log(10n / 3n);
+*/
+
+//DATES
+const now = new Date();
+console.log(now);
+
+console.log(new Date(`Apr 15 2026 17:13:50`));
+console.log(new Date(`December 15, 2015`));
+
+console.log(new Date(account1.movementsDates[0]));
+console.log(new Date(2035, 10, 12, 15, 23, 3));
+console.log(new Date(2035, 10, 31));
+
+console.log(new Date(0));
+console.log(new Date(3 * 24 * 60 * 60 * 1000));
+
+//working with dates
+const future = new Date(2052, 10, 10, 13);
+console.log(future);
+console.log(future.toISOString());
+console.log(future.getFullYear());
+console.log(future.getMonth());
+console.log(future.getDate());
+console.log(future.getDay());
+console.log(future.getHours());
+console.log(future.getMinutes());
+console.log(future.getSeconds());
+console.log(future.getTime());
+const dateNew = future.getTime();
+console.log(new Date(dateNew));
+console.log(new Date(2614852800000));
+
+console.log(Date.now());
+
+future.setFullYear(2034);
+console.log(future);
