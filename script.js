@@ -327,7 +327,7 @@ console.log(+(2.345).toFixed(2));
 
 
 */
-
+/*
 //The Remainder Operator
 
 console.log(5 % 2);
@@ -342,6 +342,7 @@ console.log(isEven(20));
 
 //practice colorise every .NTH movement
 
+
 labelBalance.addEventListener(`click`, function () {
   [...document.querySelectorAll(`.movements__row`)].forEach(function (row, i) {
     if (i % 3 === 0) {
@@ -349,3 +350,16 @@ labelBalance.addEventListener(`click`, function () {
     }
   });
 });
+*/
+//Numeric Separators
+
+//const diameter = 253535000000;
+const diameter = 253_535_000_000;
+console.log(diameter);
+
+const price1 = 1_500;
+const price2 = 15_00;
+console.log(price1, price2);
+
+console.log(Number(`23_000`));
+console.log(parseInt(`23_000`));
