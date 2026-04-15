@@ -284,7 +284,7 @@ console.log(Number.isInteger(20 / 0));
 */
 
 //Math & Rounding
-
+/*
 console.log(Math.sqrt(4));
 console.log(16 ** (1 / 2));
 console.log(8 ** (1 / 3));
@@ -324,3 +324,28 @@ console.log((2.7).toFixed(0));
 console.log((2.7).toFixed(3));
 console.log((2.345).toFixed(2));
 console.log(+(2.345).toFixed(2));
+
+
+*/
+
+//The Remainder Operator
+
+console.log(5 % 2);
+console.log(5 / 2);
+
+console.log(6 % 2);
+
+const isEven = n => n % 2 === 0;
+
+console.log(isEven(3));
+console.log(isEven(20));
+
+//practice colorise every .NTH movement
+
+labelBalance.addEventListener(`click`, function () {
+  [...document.querySelectorAll(`.movements__row`)].forEach(function (row, i) {
+    if (i % 3 === 0) {
+      row.style.backgroundColor = `blue`;
+    }
+  });
+});
