@@ -101,6 +101,13 @@ const formatMovementDate = function (date, local) {
   }
 };
 
+const formatCur = function (value, currency, locale) {
+  return new Intl.NumberFormat(locale, {
+    style: `currency`,
+    currency: currency,
+  }).format(value);
+};
+
 const displayMovements = function (acc, sort = false) {
   containerMovements.innerHTML = '';
 
@@ -123,13 +130,15 @@ const displayMovements = function (acc, sort = false) {
     const date = new Date(movementDate);
     const displayDate = formatMovementDate(date, acc.locale);
 
+    const formatedMov = formatCur(movement, acc.currency, acc.locale);
+
     const html = `
       <div class="movements__row">
         <div class="movements__type movements__type--${type}">${
           i + 1
         } ${type}</div>
         <div class="movements__date">${displayDate}</div>
-        <div class="movements__value">${movement.toFixed(2)}€</div>
+        <div class="movements__value">${formatedMov}</div>
       </div>
     `;
 
@@ -139,19 +148,19 @@ const displayMovements = function (acc, sort = false) {
 
 const calcDisplayBalance = function (acc) {
   acc.balance = acc.movements.reduce((acc, mov) => acc + mov, 0);
-  labelBalance.textContent = `${acc.balance.toFixed(2)}€`;
+  labelBalance.textContent = formatCur(acc.balance, acc.currency, acc.locale);
 };
 
 const calcDisplaySummary = function (acc) {
   const incomes = acc.movements
     .filter(mov => mov > 0)
     .reduce((acc, mov) => acc + mov, 0);
-  labelSumIn.textContent = `${incomes.toFixed(2)}€`;
+  labelSumIn.textContent = formatCur(incomes, acc.currency, acc.locale);
 
   const out = acc.movements
     .filter(mov => mov < 0)
     .reduce((acc, mov) => acc + mov, 0);
-  labelSumOut.textContent = `${Math.abs(out).toFixed(2)}€`;
+  labelSumOut.textContent = formatCur(Math.abs(out), acc.currency, acc.locale);
 
   const interest = acc.movements
     .filter(mov => mov > 0)
@@ -161,7 +170,7 @@ const calcDisplaySummary = function (acc) {
       return int >= 1;
     })
     .reduce((acc, int) => acc + int, 0);
-  labelSumInterest.textContent = `${interest.toFixed(2)}€`;
+  labelSumInterest.textContent = formatCur(interest, acc.currency, acc.locale);
 };
 
 const createUsernames = function (accs) {
@@ -510,7 +519,7 @@ future.setFullYear(2034);
 console.log(future);
 
 */
-
+/*
 const future = new Date(2038, 11, 10, 12, 25);
 console.log(+future);
 
@@ -519,3 +528,26 @@ const calcDaysPassed = (date1, date2) =>
 
 const days1 = calcDaysPassed(new Date(2037, 11, 10), new Date(2037, 11, 1));
 console.log(days1);
+*/
+
+//Internationalizing Numbers
+
+const number = 532534624.253;
+
+const options = {
+  style: `currency`,
+  //unit: `celsius`,
+  currency: `EUR`,
+  // useGrouping: false,
+};
+
+console.log(`US: ${new Intl.NumberFormat(`en-US`, options).format(number)}`);
+console.log(
+  `Germany: ${new Intl.NumberFormat(`de-DE`, options).format(number)}`,
+);
+console.log(`Syria: ${new Intl.NumberFormat(`ar-SY`, options).format(number)}`);
+
+console.log(
+  navigator.language,
+  new Intl.NumberFormat(navigation.language, options).format(number),
+);
