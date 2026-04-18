@@ -288,14 +288,16 @@ btnLoan.addEventListener('click', function (e) {
   const amount = Math.floor(inputLoanAmount.value);
 
   if (amount > 0 && currentAccount.movements.some(mov => mov >= amount * 0.1)) {
-    // Add movement
-    currentAccount.movements.push(amount);
+    setTimeout(() => {
+      // Add movement
+      currentAccount.movements.push(amount);
 
-    //Add transfer date
-    currentAccount.movementsDates.push(new Date().toISOString());
+      //Add transfer date
+      currentAccount.movementsDates.push(new Date().toISOString());
 
-    // Update UI
-    updateUI(currentAccount);
+      // Update UI
+      updateUI(currentAccount);
+    }, 3000);
   }
   inputLoanAmount.value = '';
 });
@@ -529,7 +531,7 @@ const calcDaysPassed = (date1, date2) =>
 const days1 = calcDaysPassed(new Date(2037, 11, 10), new Date(2037, 11, 1));
 console.log(days1);
 */
-
+/*
 //Internationalizing Numbers
 
 const number = 532534624.253;
@@ -551,3 +553,24 @@ console.log(
   navigator.language,
   new Intl.NumberFormat(navigation.language, options).format(number),
 );
+*/
+
+//Working with Timers
+
+//setTimeout
+const ingridients = [`olive`, `ketchup`];
+
+const timerPizza = setTimeout(
+  (ing1, ing2) => console.log(`Your pizza with ${ing1} and ${ing2} is ready`),
+  5000,
+  ...ingridients,
+);
+
+console.log(`...WAITING`);
+if (ingridients.includes(`olive`)) clearTimeout(timerPizza);
+
+//setInterval
+setInterval(function () {
+  const t = new Date();
+  console.log(t);
+}, 2000);
